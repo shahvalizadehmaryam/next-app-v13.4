@@ -9,3 +9,8 @@ export async function GET(req) {
   const filteredData = data.filter((i) => i.name === name);
   return NextResponse.json(filteredData);
 }
+export async function POST(req) {
+  const body = await req.json();
+  console.log(body);
+  return NextResponse.json(`you are ${body.data.name}`);
+}
