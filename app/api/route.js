@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
-
-export async function GET() {
-  const data = { name: "maryam", lastName: "shahvali" };
-  return NextResponse.json({ data });
+const data = [
+  { name: "milad", lastName: "Azami" },
+  { name: "erfan", lastName: "Yousefi" },
+];
+export async function GET(req) {
+  const { searchParams } = new URL(req.url);
+  const name = searchParams.get("name");
+  const filteredData = data.filter((i) => i.name === name);
+  return NextResponse.json(filteredData);
 }
